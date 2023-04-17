@@ -11,9 +11,6 @@ var searchRange = function(nums, target) {
     let r = nums.length - 1
     while(l <= r) {
         let m = Math.floor((l + r) / 2)
-        if (m === l) {
-            return [nums[l] === target ? l : nums[r] === target ? r : -1, nums[r] === target ? r : nums[l] === target ? l : -1]
-        }
         if (nums[m] === target) {
             l = m
             r = m
@@ -22,9 +19,9 @@ var searchRange = function(nums, target) {
             return [l + 1, r - 1]
         }
         if (nums[m] > target) {
-            r = m
+            r = m - 1
         } else {
-            l = m
+            l = m + 1
         }
     }
     return [-1, -1]
